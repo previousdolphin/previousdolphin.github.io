@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PREVIOUS_DOLPHIN // WRITING GAME</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;600&family=Inter:wght@300;400;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --island-deep: #0a141d;
+            --island-paper: #f0f4f8;
+            --island-ink: #1a2a36;
+            --ocean-accent: #22d3ee;
+            --archive-gold: #b3924e;
+        }
+
+        body {
+            background-color: var(--island-deep);
+            color: var(--island-paper);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Top-aligned Flowy Animation Zone */
+        #header-canvas-container {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #001a2c, var(--island-deep));
+            border-bottom: 1px solid rgba(34, 211, 238, 0.2);
+        }
+
+        #ambient-canvas {
+            width: 100%;
+            height: 100%;
+            opacity: 0.8;
+        }
+
+        /* Typography Refinements */
+        .crisp-title {
+            font-family: 'Crimson Pro', serif;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+            color: white;
+        }
+
+        .archive-mono {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+        }
+
+        .glass-panel {
+            background: rgba(15, 31, 45, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .terminal-box {
+            background: rgba(5, 12, 18, 0.95);
+            border: 1px solid rgba(34, 211, 238, 0.15);
+        }
+
+        /* Custom Scrollbar */
+        .custom-scroll::-webkit-scrollbar { width: 3px; }
+        .custom-scroll::-webkit-scrollbar-track { background: transparent; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: var(--ocean-accent); border-radius: 10px; }
+
+        .highlight-accent {
+            color: var(--ocean-accent);
+            font-weight: 600;
+        }
+
+        /* Subtle Animation for Title Fade */
+        .fade-in-up {
+            animation: fadeInUp 1.2s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- TOP ANIMATED ZONE -->
+    <div id="header-canvas-container">
+        <canvas id="ambient-canvas"></canvas>
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+             <div class="text-center fade-in-up">
+                <span class="archive-mono text-cyan-400 opacity-60 uppercase">The Previous Dolphin Project</span>
+                <h1 class="crisp-title text-5xl md:text-7xl mt-2">Writing Game</h1>
+             </div>
+        </div>
+    </div>
+
+    <main class="relative z-10 container mx-auto px-6 py-12 flex flex-col gap-12 max-w-6xl">
+        
+        <!-- SUB-HEADER / NAV -->
+        <div class="flex flex-col md:flex-row justify-between items-center border-b border-white/10 pb-6 gap-4">
+            <div class="archive-mono text-gray-400">
+                STATUS: <span class="text-green-400">INDEXING_FORKS</span>
+            </div>
+            <p class="text-center italic text-gray-400 font-light max-w-md">
+                "A world so mundane it feels like an archival document, broken only by the unacknowledged."
+            </p>
+            <div class="archive-mono text-gray-400">
+                LOC: 19.8968° N, 155.5828° W (Aloha)
+            </div>
+        </div>
+
+        <!-- CONTENT GRID -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            
+            <!-- LEFT: THE ASSIGNMENT (5 cols) -->
+            <div class="lg:col-span-5 flex flex-col gap-6">
+                <div class="glass-panel p-8 rounded-lg border-l-4 border-archive-gold">
+                    <h2 class="archive-mono text-archive-gold mb-4 uppercase font-bold">Protocol // Assignment_01</h2>
+                    <div class="space-y-5 text-gray-300 font-light text-lg">
+                        <p>
+                            Construct a world of <span class="highlight-accent">hyper-realism</span>. It must feel like a documentary, prioritizing exposition over intrigue.
+                        </p>
+                        <p>
+                            The pacing should be deliberately slow. Boring. 
+                        </p>
+                        <blockquote class="border-l-2 border-white/20 pl-6 text-gray-400 italic">
+                            Then, intersperse random acts of violence. The narrative must ignore them. The actors must not react. 
+                        </blockquote>
+                    </div>
+                    
+                    <div class="mt-8 pt-6 border-t border-white/10">
+                        <a href="https://github.com/previousdolphin/previousdolphin" target="_blank" class="inline-flex items-center gap-3 text-cyan-400 hover:text-white transition-colors group">
+                            <span class="archive-mono">CLONE_RESOURCES</span>
+                            <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="p-6 text-sm text-gray-500 font-light leading-relaxed">
+                    <p class="mb-4">
+                        This repository functions as a collective cluster. By using GitHub versioning, we preserve the purity of mundane observation.
+                    </p>
+                    <p class="archive-mono text-[10px] uppercase">Curated by the Dolphin Librarian</p>
+                </div>
+            </div>
+
+            <!-- RIGHT: THE OBSERVATION WINDOW (7 cols) -->
+            <div class="lg:col-span-7 flex flex-col gap-4">
+                <div class="glass-panel p-5 rounded-lg">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="archive-mono text-cyan-400 uppercase font-bold tracking-widest">Observation Deck</h3>
+                        <span class="bg-cyan-400/10 text-cyan-400 px-2 py-0.5 rounded text-[10px] border border-cyan-400/20">FORK_STREAM</span>
+                    </div>
+                    <p class="text-xs text-gray-400 leading-relaxed italic">
+                        The window below displays <span class="text-white">selected forks</span> from our community contributors. We highlight these as premier examples of resultant hyper-mundanity.
+                    </p>
+                </div>
+
+                <div class="terminal-box flex-1 rounded-lg overflow-hidden flex flex-col h-[480px]">
+                    <div class="bg-black/40 px-6 py-3 border-b border-white/5 flex justify-between items-center">
+                        <div class="flex items-center gap-3">
+                            <div class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_10px_#22d3ee]"></div>
+                            <span id="active-repo" class="archive-mono text-gray-300">odessej / ONCENACENT.html</span>
+                        </div>
+                        <span id="load-tag" class="archive-mono text-[10px] text-cyan-600">ACQUIRING_DATA</span>
+                    </div>
+                    
+                    <div id="terminal-content" class="flex-1 p-8 overflow-y-auto text-lg text-gray-400 font-light leading-relaxed custom-scroll">
+                        <!-- Typewriter effect here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="mt-12 text-center border-t border-white/5 pt-8">
+            <p class="archive-mono text-[10px] text-gray-600 uppercase tracking-[0.4em]">
+                Previous Dolphin // Documentation // 2026.01.21
+            </p>
+        </footer>
+    </main>
+
+    <script>
+        // --- 1. Top-Aligned Ocean Animation ---
+        const canvas = document.getElementById('ambient-canvas');
+        const ctx = canvas.getContext('2d');
+        let waves = [];
+        const waveCount = 4;
+
+        class Wave {
+            constructor(y, amplitude, length, speed, color) {
+                this.y = y;
+                this.amplitude = amplitude;
+                this.length = length;
+                this.speed = speed;
+                this.color = color;
+                this.offset = Math.random() * 200;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.moveTo(0, this.y);
+                for (let i = 0; i < canvas.width; i++) {
+                    ctx.lineTo(i, this.y + Math.sin(i * this.length + this.offset) * this.amplitude);
+                }
+                ctx.strokeStyle = this.color;
+                ctx.lineWidth = 1.5;
+                ctx.stroke();
+                this.offset += this.speed;
+            }
+        }
+
+        function initWaves() {
+            canvas.width = canvas.parentElement.offsetWidth;
+            canvas.height = canvas.parentElement.offsetHeight;
+            waves = [];
+            for (let i = 0; i < waveCount; i++) {
+                waves.push(new Wave(
+                    canvas.height * 0.5 + (i * 20),
+                    15 + (i * 5),
+                    0.005,
+                    0.01 + (i * 0.002),
+                    `rgba(34, 211, 238, ${0.1 + (i * 0.05)})`
+                ));
+            }
+        }
+
+        function animateWaves() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            waves.forEach(w => w.draw());
+            // Add tiny dolphin sparkle silhouettes occasionally
+            requestAnimationFrame(animateWaves);
+        }
+
+        window.addEventListener('resize', initWaves);
+        initWaves();
+        animateWaves();
+
+        // --- 2. Archival Fetch & Type ---
+        const term = document.getElementById('terminal-content');
+        const loadTag = document.getElementById('load-tag');
+        const activeRepo = document.getElementById('active-repo');
+
+        const fallbackData = [
+            "The morning temperature in the archives was exactly 68 degrees.",
+            "I spent three hours cataloging the 1994 humidity logs.",
+            "The hum of the HVAC system is a constant, reassuring companion.",
+            "Mr. Henderson brought in a box of plain crackers to share.",
+            "A sudden, silent explosion turned the breakroom into a void of white fire.",
+            "I noticed that my black pen was running slightly low on ink.",
+            "I checked the inventory for a replacement cartridge.",
+            "Outside, the palm trees did not move. There was no wind today.",
+            "The ledger requires three more signatures before the end of the day.",
+            "Everything is exactly as it should be."
+        ];
+
+        async function streamArchive() {
+            try {
+                loadTag.innerText = "STREAM_SYNCING";
+                const response = await fetch('https://raw.githubusercontent.com/odessej/previousdolphin/master/ONCENACENT.html');
+                if (!response.ok) throw new Error();
+                
+                const html = await response.text();
+                const doc = new DOMParser().parseFromString(html, 'text/html');
+                let lines = (doc.body.innerText || doc.body.textContent).split('\n')
+                            .map(l => l.trim()).filter(l => l.length > 8);
+
+                loadTag.innerText = "STREAM_LIVE";
+                typeOut(lines.slice(0, 35));
+            } catch {
+                loadTag.innerText = "LOCAL_CACHE_SYNC";
+                activeRepo.innerText = "LOCAL_ARCHIVE / FALLBACK";
+                typeOut(fallbackData);
+            }
+        }
+
+        let lineIdx = 0;
+        function typeOut(lines) {
+            if (lineIdx >= lines.length) return;
+
+            const p = document.createElement('p');
+            p.className = "mb-6 opacity-0 transition-opacity duration-1000";
+            term.appendChild(p);
+
+            const text = lines[lineIdx];
+            let charIdx = 0;
+            
+            const timer = setInterval(() => {
+                p.textContent += text[charIdx];
+                p.classList.remove('opacity-0');
+                charIdx++;
+                term.scrollTop = term.scrollHeight;
+                
+                if (charIdx >= text.length) {
+                    clearInterval(timer);
+                    lineIdx++;
+                    setTimeout(() => typeOut(lines), 900);
+                }
+            }, 30);
+        }
+
+        setTimeout(streamArchive, 1000);
+    </script>
+</body>
+</html>
